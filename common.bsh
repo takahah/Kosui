@@ -5,6 +5,7 @@ import info.apoluna.kosui.*;
 WebDriver driver;
 firefox(){ driver = WebDriverFactory.getDriver("firefox"); return driver; }
 ie(){ driver = WebDriverFactory.getDriver("ie"); return driver; }
+opera(){ driver = WebDriverFactory.getDriver("opera"); return driver; }
 get(url){ driver.get(url); }
 click(by){ driver.findElement(by).click(); }
 id(k){ return By.id(k); }
