@@ -1,6 +1,7 @@
 package info.apoluna.kosui;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
@@ -10,18 +11,36 @@ import bsh.Interpreter;
 import com.beust.jcommander.JCommander;
 
 public class Cui {
+	Interpreter i;
+
 	public Cui(CommandLineArguments args) {
 
 	}
 
+	public void finalize() {
+		if (i != null) {
+			try {
+				i.eval("quit()");
+				i = null;
+			} catch (EvalError e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
 	public void execute() {
-		Interpreter i = new Interpreter();
+		i = new Interpreter();
 		try {
-			i.eval("import org.openqa.selenium.*;");
-			i.eval("import java.util.*;");
-			i.eval("import info.apoluna.kosui.*;");
-		} catch (EvalError e1) {
-			e1.printStackTrace();
+			i.source("common.bsh");
+		} catch (EvalError e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

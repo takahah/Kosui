@@ -1,0 +1,15 @@
+import org.openqa.selenium.*;
+import java.util.*;
+import info.apoluna.kosui.*;
+
+WebDriver driver;
+firefox(){ driver = WebDriverFactory.getDriver("firefox"); return driver; }
+ie(){ driver = WebDriverFactory.getDriver("ie"); return driver; }
+get(url){ driver.get(url); }
+click(by){ driver.findElement(by).click(); }
+id(k){ return By.id(k); }
+xpath(k){ return By.xpath(k); }
+name(k){ return By.name(k); }
+linkText(k){ return By.linkText(k); }
+input(by, value){ driver.findElement(by).sendKeys(value); }
+quit(){ driver.quit(); }
