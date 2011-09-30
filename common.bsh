@@ -3,14 +3,14 @@ import java.util.*;
 import info.apoluna.kosui.*;
 
 WebDriver driver;
-firefox(){ driver = WebDriverFactory.getDriver("firefox"); return driver; }
-ie(){ driver = WebDriverFactory.getDriver("ie"); return driver; }
-opera(){ driver = WebDriverFactory.getDriver("opera"); return driver; }
+firefox(){ print("wait browser"); driver = WebDriverFactory.getDriver("firefox"); return driver; }
+ie(){ print("wait browser"); driver = WebDriverFactory.getDriver("ie"); return driver; }
+opera(){ print("wait browser"); driver = WebDriverFactory.getDriver("opera"); return driver; }
 get(url){ driver.get(url); }
 click(by){ driver.findElement(by).click(); }
 id(k){ return By.id(k); }
 xpath(k){ return By.xpath(k); }
 name(k){ return By.name(k); }
 linkText(k){ return By.linkText(k); }
-input(by, value){ driver.findElement(by).sendKeys(value); }
+input(by, value){ SendKeysHelper.sendKeys( driver, by, value ); }
 quit(){ driver.quit(); }
